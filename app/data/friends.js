@@ -12,10 +12,6 @@ var friends = [
         "photo": "https://cdn.pixabay.com/photo/2019/03/10/03/36/reading-4045414_960_720.jpg",
         "scores": [4,4,4,4,4,4,4,4,4,4]
     }, {
-        "name": "Suzy Snowflake",
-        "photo": "https://pixabay.com/photos/hug-people-woman-shades-onesie-2591789/", 
-        "scores": [5,5,5,5,5,5,5,5,5,5]
-    }, {
         "name": "Nona Sense", 
         "photo":"https://cdn.pixabay.com/photo/2016/11/23/00/32/apple-1851464_960_720.jpg", 
         "scores": [2,2,2,2,2,2,2,2,2,2]

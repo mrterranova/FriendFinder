@@ -62,7 +62,7 @@
                     <option></option>
                     <option value="1">A nice long bike ride or a hiking trip.</option>
                     <option value="2">Bringing my work home or developing lucrative future plans.</option>
-                    <option value="3">Take a nice long nap in the middle of the day.</option>
+                    <option value="3">Take a nice long nap or listening to music on the couch.</option>
                     <option value="4">Read a book or listen to a lecture or talk online.</option>
                     <option value="5">Binge watching anime or playing video games.</option>
                 </select>
@@ -137,7 +137,7 @@
                 <select class="choosen-select" id="q9" required>
                     <option></option>
                     <option value="1">Best time of the day is the break dawn.</option>
-                    <option value="2">"Don't wish it were easier. Wish you were better."</option>
+                    <option value="2">Late mornings where I've finished typical daily tasks.</option>
                     <option value="3">I like the middle of day because why not?</option>
                     <option value="4">I'm a night owl. I stay up as late as I need to.</option>
                     <option value="5">I like the afternoons because I have all the me time I want.</option>
@@ -149,11 +149,11 @@
                     <h5>Which website do you visit daily?</h5>
                     <select class="choosen-select" id="q10" required>
                         <option></option>
-                        <option value="1">Outlook/gmail/etc.</option>
-                        <option value="2">Facebook</option>
+                        <option value="1">ESPN/Yahoo! Sports/Etc.</option>
+                        <option value="2">Outlook/gmail/etc.</option>
                         <option value="3">Youtube</option>
-                        <option value="4">ESPN/Yahoo! Sports/Etc.</option>
-                        <option value="5">Netflix</option>
+                        <option value="4">Netflix</option>
+                        <option value="5">Facebook</option>
                     </select>
                 </div>
                 <br>
@@ -176,15 +176,17 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2>Your New Friend Awaits!</h2>
+                        <h2 style="text-align: center;">Your New Friend Awaits!</h2>
                     </div>
                     <div class="modal-body" style="display: flex; justify-content: center;">
-                        <h3 id="matchName" style="padding:40px;"></h3>
+                        <h3 id="matchName" style="padding:40px;width:100%;text-align: center;"></h3>
                         <br>
-                        <img id="matchImg" alt="photo" style="max-width: 300px; max-height: 300px;">
+                        <img id="matchImg" alt="photo" style="max-width: 400px; max-height: 400px;">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <a href="/"><button type="button" class="btn btn-warning" style="margin-right:60%;">Home</button></a>
+                        
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                 </div>
 
@@ -225,6 +227,18 @@
                 //post information
                 $.post("/api/friends", newFriend,
                     function (data) {
+                        $("#name").val("");
+                        $("photo").val("");
+                        $("#q1").val("");
+                        $("#q2").val("");
+                        $("#q3").val("");
+                        $("#q4").val("");
+                        $("#q5").val("");
+                        $("#q6").val("");
+                        $("#q7").val("");
+                        $("#q8").val("");
+                        $("#q9").val("");
+                        $("#q10").val("");
                         //clear input fields
                         $("#matchName").text(data.name);
                         if (data.photo !== "") {
@@ -234,8 +248,6 @@
                         }
                         // Show the modal with the best match
                         $("#resultsModal").modal("toggle");
-                        $("#name").val("");
-                        $("photo").val("");
                     });
             });
         </script>
