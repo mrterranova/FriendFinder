@@ -6,35 +6,35 @@ module.exports = function(app) {
 
 //GET for JSON only
   app.get("/api/friends", function(req, res) {
-    res.json(friends)
+      res.json(friends[i])
   });
 
 //POST requests
   app.post("/api/friends", function(req, res) {
       let userScore = req.body.scores;
-      let scoresArr = [];
-      let bestMatch = 0;
+      let allScores = [];
+      var matched = 0;
+      var difference = 0;
 
-      console.log()
+      //go through the array of friends
       for (var i=0; i< friends.length; i++) {
-        var scoreDiff = 0;
-          console.log(friends[i].scores)
         for (var j=0; j<userScore.length; j++){
-          console.log(j + ". scoreDiff = " +scoreDiff)
-          scoreDiff += Math.abs(parseInt(friends[i].scores[j]) - parseInt(userScore[j]));
+          difference += Math.abs(parseInt(friends[i].scores[j]) - parseInt(userScore[j]));
         }
-        scoresArr.push(scoreDiff);
-        console.log("scores", scoresArr)
+        allScores.push(difference);
       }
-      for (var i=0; i<scoresArr.length; i ++){
-        if (scoresArr[i] += scoresArr[bestMatch]) {
-          bestMatch = i;
+      //find the friend that matches
+      for (var i=0; i<allScores.length; i ++){
+        if (allScores[i] == allScores[matched]) {
+        matched = i;
+        } else if (allScores[i] <= allScores[matched]){
+            matched = i;
         }
       }
-      console.log("best match", bestMatch)
-      let soulMate = friends[bestMatch];
-      res.json(soulMate);
-      console.log(req.body)
+      let bestFriend = friends[matched];
+      res.json(bestFriend);
+
+      //add name to the array of friends
       friends.push(req.body);
   });
   
