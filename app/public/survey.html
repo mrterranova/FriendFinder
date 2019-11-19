@@ -5,22 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Millenial Meetup</title>
+    <title>New Friend Today</title>
     <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
+    <style>
+        body {
+            background: url("https://media.istockphoto.com/vectors/beautiful-monochrome-black-and-white-seamless-background-with-tree-vector-id485452500");
+        }
+    </style>
     <div class="container">
-        <div class="jumbotron">
+        <img src="./assets/images/cup.png" style="position: absolute;z-index: 1;">
+        <div class="jumbotron " style="background-color:rgb(250, 225, 179);">
             <div class="container">
                 <h1 class="display-4">Welcome to the Friend Finder Test</h1>
                 <p class="lead">Below is a test to met your new best friend. Take the quiz and find out who that might
                     be.</p>
             </div>
         </div>
-        <div class="jumbotron">
+        <div class="jumbotron" style="background: rgb(250, 225, 179);">
             <form>
                 <h3>Please provide us your name:</h3>
                 <input type="text" id="name" style="width:70%;">
@@ -69,7 +75,8 @@
                     <option value="1">Individuals who can't live without their cellphone on an outdoor trip.</option>
                     <option value="2">People who don't get to work and stay busy working.</option>
                     <option value="3">Anyone really, just as long as they stay stay pretty chill.</option>
-                    <option value="4">People who don't like to listen to what I have to say and acknowledge all my opinions</option>
+                    <option value="4">People who don't like to listen to what I have to say and acknowledge all my
+                        opinions</option>
                     <option value="5">I'm only really very tolerant of people who are tolerant.</option>
                 </select>
                 <br>
@@ -114,11 +121,14 @@
                 <h5>What is one warning you should give your new friend about your behaviour?</h5>
                 <select class="choosen-select" id="q8" required>
                     <option></option>
-                    <option value="1">Really big on sports and the outdoors, so you sort of need to be into that.</option>
-                    <option value="2">I will probably treat my friendships like a businesses more than a friendship.</option>
-                    <option value="3">I don't really care who hangs out with me, but understand that I don't get passionate about anything.</option>
+                    <option value="1">Really big on sports and the outdoors, so you sort of need to be into that.
+                    </option>
+                    <option value="2">I will probably treat my friendships like a businesses more than a friendship.
+                    </option>
+                    <option value="3">I don't get passionate about anything at all.</option>
                     <option value="4">I love proving that I'm a pretty smart person.</option>
-                    <option value="5">It's important to understand alot about people believe so I can work with them.</option>
+                    <option value="5">It's important to understand alot about people believe so I can work with them.
+                    </option>
                 </select>
                 <br>
                 <br>
@@ -152,6 +162,11 @@
                 <br>
             </form>
         </div>
+        <div style="background:whitesmoke;border-radius:5;text-align: center;">
+            <a href="/api/friends">View All Friends</a> &nbsp;|| &nbsp;<a
+                href="https://github.com/mrterranova/FriendFinder" target="_blank">Github Project Page</a>
+        </div>
+
         </container>
 
         <!-- Modal -->
@@ -164,7 +179,7 @@
                         <h2>Your New Friend Awaits!</h2>
                     </div>
                     <div class="modal-body" style="display: flex; justify-content: center;">
-                        <h3 id="matchName"></h3>
+                        <h3 id="matchName" style="padding:40px;"></h3>
                         <br>
                         <img id="matchImg" alt="photo" style="max-width: 300px; max-height: 300px;">
                     </div>
@@ -177,8 +192,12 @@
         </div>
         <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
         <script>
             $('.submit').on('click', function (event) {
                 event.preventDefault();
@@ -208,7 +227,7 @@
                     function (data) {
                         //clear input fields
                         $("#matchName").text(data.name);
-                        if (data.photo !==""){
+                        if (data.photo !== "") {
                             $("#matchImg").attr("src", data.photo);
                         } else {
                             $("#matchImg").attr("src", "https://image.freepik.com/free-icon/male-user-silhouette_318-35708.png")
